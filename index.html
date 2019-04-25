@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SQL Parser</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+</head>
+<body>
+<div class="container">
+    <div class="grid-container" align="center" style="display: grid; grid-template-columns: auto auto; padding: 10px; grid-gap: 4px;">
+        <div class="grid-item"><a class="button" href="/SQL Parser/index.html">SQL Parser</a></div>
+        <div class="grid-item"><a class="button" href="/SQL Parser/evaluationForm.html">Evaluation Form</a></div>
+    </div>
+    <br />
+    <h3>SQL Parser</h3>
+    <br />
+    <h5>Enter your query below for feedback on it</h5>
+    <label for="parseBox"></label><textarea ID="parseBox" name="parseBox" onkeyup="keyReleased()" rows="4" style="width:100%;"></textarea>
+    <br />
+    <form id="submitQuery">
+        <div class="row">
+            <div class="two columns"><button type="submit" id="querySubmitBtn">Submit Query</button></div>
+            <div class="ten columns"><h6 id="serverFeedbackText"></h6></div>
+        </div>
+    </form>
+    <h6>Issues with query:</h6>
+    <ul id="feedback1"></ul>
+</div>
+</body>
+
+<script type='text/javascript' src='JavaScriptSpellCheck/include.js'></script>
+<script type='text/javascript' src="js/requiredClauses.js"></script>
+<script type='text/javascript' src="js/reservedCharacters.js"></script>
+<script type='text/javascript' src="js/clausesStartEnd.js"></script>
+<script type='text/javascript' src="js/reservedClauses.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js" type="text/javascript"></script>
+<script>
+    $Spelling.SpellCheckAsYouType('parseBox'); //Mark text area for spell checking, underline on misspelt words
+    let words = []; //Array used across functions.
+
+    $("#submitQuery").submit(function(event) { // Form submit, ajax used instead of regular post so no refresh on failing to submit.
+        let request;
+        event.preventDefault();
+        if (request) {request.abort();}
+        let formData = new FormData (); //Get data and make post
+        formData.append("query" , String(document.getElementById('parseBox').value)); //Query
+        formData.append("jsonWords" , JSON.stringify(words)); //word array
+        request = $.ajax({url: "server.php", type: "post", processData: false, contentType: false, data: formData});
+
+        let serverFeedback = document.getElementById('serverFeedbackText');
+        request.done(function (response){serverFeedback.innerHTML = "Server message: " + response;}); // success handler
+        request.fail(function (textStatus, errorThrown){serverFeedback.innerHTML = "Server message: Error " + textStatus + " " + errorThrown;}); // Failure handler
+    });
+
+    function keyReleased() {
+        let text = document.getElementById("parseBox").value.toLowerCase(); //Store query to variable
+        document.getElementById("feedback1").innerHTML = ''; //Clear feedback section
+
+        if (text.trim() !== "") { //If query text box is not empty
+
+            let parCheck = balancedParenthesiseCheck(text); //Call function to check if quotes, brackets and parenthesise are balanced/even/correct
+            let quoteRanges = getQuoteRanges(parCheck[1], parCheck[2]); //Get the indexes/positions of double and single quote ranges
+
+            let textClauses = text;
+            if (quoteRanges.length > 0) { //If quote ranges exist then
+                quoteRanges.forEach(function(range) { //create a string with the text between the quoted text replaced with blank spaces so it is not checked
+                    if (range[0] + 1 !== (range[1])) {
+                        textClauses = textClauses.replace(text.substring(range[0] + 1, range[1]), ' '.repeat((range[1]) - range[0] - 1));
+                    } //If quotes are not next to each other then replace the text between them with a matching number of blank spaces.
+                });
+            }
+
+            words = lexer(textClauses); //Call the lexer with the text/clauses
+            let wordsComp = words.slice(1); //Comparison array for checking if a clause has its required clause/s after it with the first element removed.
+
+            words.forEach(function(word) { //Do for each word
+                if ($Spelling.BinSpellCheck(word[1].replace(",", "")) === false) { //Spell check with commas ignored and provide spelling suggestions if misspelt.
+                    appendFeedback('"' + word[1] + '" at column ' + word[0] + " may be misspelt, here are some spelling suggestions: " + $Spelling.SpellCheckSuggest(word[1]));
+                }
+
+                oldClauseCheck(word, textClauses); //Old clause check that does not take clause position into account
+
+                let clauseRangesData = getClauseRanges(wordsComp, word); //Get the start and end ranges of clauses along with the text between each range
+                let betweenClauses = clauseRangesData[0]; // //Clauses that are expected/accepted to be between the start and end clauses
+                let betweenClauseText = clauseRangesData[1]; //Text between the clauses, i.e. "*" is between "select" and "from" in "select * from"
+                let endClauses = clauseRangesData[2]; //What is the end clause of a start clause, i.e. "from" is an end for "select"
+                let specialConditions = clauseRangesData[3]; //special clause conditions, i.e. from may not have an end clause
+                let clauseRanges = clauseRangesData[4]; //Start and end clauses along with index numbers
+
+                if (clauseRanges.length > 0) { //If there is a clause range
+                    let insideBracket = 0; //For ignoring clause if inside sub-query
+                    if (betweenClauseText.length > 0) { //If there is text between the start and end clauses
+                        betweenClauseText.forEach(function(clauseText) { //For each word between the clauses
+                            let clauseMatch = false;
+                            let requiredClauses = [];
+                            if ('([{'.indexOf(clauseText[1]) > -1) {insideBracket++} //If open bracket then +1
+                            if (')]}'.indexOf(clauseText[1]) > -1) {insideBracket--} //If close bracket then -1
+                            if (insideBracket === 0) { //If not in a sub-query
+                                betweenClauses.forEach(function (betweenClause) { //Check word against each expected clause
+                                    if (clauseMatch === false) { //Check word matches an expected clause if no match has been found
+                                        if (clauseText[1].includes(betweenClause) || betweenClause.includes("databaseObjectName")) {clauseMatch = true;}
+                                        else {requiredClauses.push(clauseText[1]);} //If no match then put missing clause into array
+                                    }
+                                });
+                            }
+                            if (clauseMatch === false && requiredClauses.length > 0) {
+                                appendFeedback('Clause "' + clauseText[1] + '" at character ' + clauseText[0] + ' does not appear to be valid, the expected values can include: ' + requiredClauses);
+                            }
+                        });
+                    } else if (betweenClauses.length > 0) {
+                        appendFeedback('There is no text between "' + clauseRanges[0][2] + '" at character ' + clauseRanges[0][0] + ' and "' + clauseRanges[0][3] + '" at character ' + clauseRanges[0][1] + ' but one or more of the following are required: ' + betweenClauses);
+                    } else if (specialConditions.indexOf('endEmpty') > - 1) { //Clause range but no text between them and clause may not have end
+                        appendFeedback("new");
+                    }
+                } else if (clauseRanges.length <= 0 && endClauses.length > 1 && specialConditions.indexOf('endEmpty') === - 1) {
+                    appendFeedback('The "' + word[1] + '" clause at character ' + word[0] + ' is missing one of the following clauses after it 1: ' + endClauses); //If no clause range for word but has end clauses then required end clause/s are missing.
+                } else if (betweenClauses.length > 0 && betweenClauseText.length === 0) {
+                    appendFeedback('The "' + word[1] + '" clause at character ' + word[0] + ' is missing one of the following: ' + betweenClauses + ". This may be a table name, column name, data type etc.");
+
+                }
+                wordsComp.shift();
+            });
+        }
+    }
+
+    function lexer(textClauses) {
+        let splits = textClauses.split(/ |(?=,)|(?=;)|(?=\))|(?=\()/g); //Split text into words, remove spaces and break on special characters
+        let index = 0; //Number/position of word
+        words = [];
+        for(let i = 0; i < splits.length; i++) { //While i is less than text length
+            if (splits[i] !== "") {
+                words.push([index, splits[i]]);
+            } //Add each word and its position to an array
+            index += splits[i].length + 1; //Index/word number increased by the word length + 1
+        }
+        return words;
+    }
+
+    function balancedParenthesiseCheck (text) {
+        //Version of https://www.robhitt.com/blog/balance-parenthesis-js/ for checking if there are unclosed parenthesise, modified to account for escaped characters, store the position/number of unbalanced parenthesis and to get the positions of quotes.
+        let tokens = [['{','}'],['[',']'],['(',')']]; //parenthesise to check for
+        let doubleQuoteIndex = []; //Array for double quote index numbers
+        let singleQuoteIndex = []; //Array for single quote index numbers
+        let bracketIndex = []; //Array for brackets
+        let openSingleQuote = false;
+        let openDoubleQuote = false;
+        let bracketFail = false;
+        let textChar = text.split(''); //Split text into characters
+        let parenthesisIndex = []; //Array for parenthesis type and index numbers
+        let strTokens = '{}[]()'; //Parenthesis to look for
+        for (let i = 0; i < textChar.length; i++) { //For each character in text
+            if (textChar[i - 1] !== "\\") { //If the character is not escaped, if there is not a \ before it
+                if (strTokens.indexOf(textChar[i]) > -1 && openDoubleQuote === false && openSingleQuote === false) { //If character matches a token
+                    let openParCheck = false;
+                    for (let j = 0; j < tokens.length; j++) {
+                        if (tokens[j][0] === textChar[i]) {
+                            openParCheck = true;
+                        } //Check if character is an open parenthesise and set openParCheck true if so.
+                    }
+                    if (openParCheck === true) { //If an open parenthesis
+                        parenthesisIndex.push([textChar[i], i]); //add to the type and position to index.
+                        bracketIndex.push([textChar[i], i]); //Add bracket to index for range checking
+                    } else { //If not an open parenthesis.
+                        if (parenthesisIndex.length === 0) { //If no parenthesis added to index and an open parenthesis is found then display message.
+                            bracketFail = true; //Error with brackets so that range check is not made
+                            appendFeedback("The " + textChar[i] + " at column " + i + " is unbalanced and may cause an error.");
+                        }
+                        let matchCheck = false;
+                        let topOfStack = parenthesisIndex.pop(); //Get last value from index
+                        for (let k = 0; k < tokens.length; k++) {
+                            if (tokens[k][0] === topOfStack[0] && tokens[k][1] === textChar[i]) { //If last bracket is open and current is close
+                                matchCheck = true; //set matchCheck to true
+                                bracketIndex.push([textChar[i], i]);
+                            }
+                        }
+                        if (matchCheck === false) { //If no match then return message, Would provide more info but due to how the code is made at this point it only returns the last character.
+                            bracketFail = true;
+                            appendFeedback("There is an unbalanced (, ), {, }, [ or ].");
+                        }
+                    }
+                } else if (textChar[i] === "'") { //If single quote
+                    singleQuoteIndex.push(i); //add quote number/position in the query to the array
+                    openSingleQuote = !openSingleQuote; //Switch true/false state, for determining if the quote is an open or a close
+                } else if (textChar[i] === '"') { //If double quote
+                    doubleQuoteIndex.push(i); //add quote number/position in the query to the array
+                    openDoubleQuote = !openDoubleQuote; //Switch true/false state, for determining if the quote is an open or a close
+                }
+            }
+        }
+        if (parenthesisIndex.length > 0) { //If the loop is done and the parenthesis index is not empty then there are unbalanced parenthesise, message for each
+            parenthesisIndex.forEach(function(value) {appendFeedback("The " + value[0] + " at column " + value[1] + " is unbalanced and may cause an error.");});
+        }
+        return [bracketFail, singleQuoteIndex, doubleQuoteIndex]
+    }
+
+    function getQuoteRanges (singleQuoteIndex, doubleQuoteIndex) {
+        let count = 0;
+        let previousValue;
+        let quoteRanges = [];
+        let singleQuoteCount = singleQuoteIndex.length; //Get the total number of single quotes
+        if ((singleQuoteCount % 2) === 0 && (singleQuoteCount > 0)) { //If even unescaped single quotes then put the start and end ranges for each into an array
+            singleQuoteIndex.forEach(function(value) {
+                if (count % 2 !== 0) {
+                    quoteRanges.push([previousValue, value]);
+                } //If odd then put quote position and the previous quote position into array
+                else {previousValue = value;} //If even quote then store it position
+                count++
+            });
+        } else if (singleQuoteCount > 0) {
+            appendFeedback("There is an unclosed ', if it is not in a text string and escaped (\') then it may cause an error.");
+        } //If remainder is not 0 then there are an odd number of single quotes
+
+        let doubleQuoteCount = doubleQuoteIndex.length; //Get the total number of double quotes
+        if ((doubleQuoteCount % 2) === 0 && (doubleQuoteCount > 0)) { //If even number of unescaped double quotes then put the start and end ranges for each pair into an array
+            count = 0;
+            previousValue = '';
+            doubleQuoteIndex.forEach(function(value) {
+                if (count % 2 !== 0) {
+                    quoteRanges.push([previousValue, value]);
+                } //If odd then put quote position and previous quote positions into the array
+                else {previousValue = value;} //If even quote then store its position
+                count++
+            });
+        } else if (doubleQuoteCount > 0) {
+            appendFeedback('There is an unclosed ", if it is not in a text string and escaped (\\") then it may cause an error.');
+        } //If remainder more than 0 then there are an odd number of double quotes
+        if (doubleQuoteCount > 0 && singleQuoteCount > 0) {
+            appendFeedback("Single and double quotes are used, if possible use one type for consistency.")
+        } //If both quote types are used then display message.
+        return quoteRanges;
+    }
+
+    function oldClauseCheck (word, textClauses) {
+        requiredClausesMultiple.forEach(function(clause) { //Check each word for if it is missing a required clause, i.e. Select with no From
+            let missingClauseCheck = false;
+            let missingClause = '';
+            clause[1].forEach(function(subClause) { //For each required sub-clause of a clause, i.e. From is a required sub-clause of Select.
+                if (word[1] === clause[0] && !textClauses.includes(subClause[0]) && missingClauseCheck === false) {
+                    missingClause += subClause[0] + ", ";
+                } //If word matches clause, text does not include sub-clause (can be multiple) and no required clause found then add missing clause to string.
+                else if (word[1] === clause[0] && textClauses.includes(subClause[0])) {
+                    missingClauseCheck = true;
+                } //If word equals clause and sub-clause is present then missingClauseCheck =  true.
+            });
+            if (missingClause !== '' && missingClauseCheck === false) {
+                appendFeedback('The "' + clause[0] + '" clause at column ' + word[0] + ' is missing one of the required following clauses: "' + missingClause + '"');
+            } //If a required sub-clause is missing then append a message detailing that.
+        });
+    }
+
+    function getClauseRanges (wordsComp, word) {
+        let clauseRanges = []; //Start and end ranges of clauses, i.e. Select to From
+        let betweenClauseText = []; //Text between the start and end clauses
+        let betweenClauses = []; //Clauses between the start and end clauses
+        let clauseMatch = false;
+        let insideBracket = 0;
+        let specialConditions = "";
+        let endClauses = [];
+        clausesStartEnd.forEach(function(clauseStartEnd) { //For each start clause
+            if (word[1].includes(clauseStartEnd[0]) && clauseMatch === false) { //Word matches start clause
+                let endClauses = clauseStartEnd[2]; //Store endClauses to variable for easier code reading
+                specialConditions = clauseStartEnd[3]; //Store special conditions to variable for easier code reading
+                let objectSeparators = clauseStartEnd[4]; //Store object seperators to a variable for easier code reading
+                clauseStartEnd[1].forEach(function(betweenClause) { //For each expected word/clause in the array for the matching clause
+                    betweenClauses.push(betweenClause) //Add the expected clauses between the start and end to array.
+                });
+                wordsComp.forEach(function(compWord) { //For each next clause
+                    if (clauseMatch === false) { //If match not found
+                        if ('([{'.indexOf(compWord[1]) > -1) { //If open bracket then +1
+                            insideBracket++
+                        }
+                        if (')]}'.indexOf(compWord[1]) > -1) { //If close bracket then -1
+                            insideBracket--
+                        }
+                        if (insideBracket === 0) { //If not between brackets
+                            if (endClauses.indexOf(compWord[1]) > -1) { //If word is an end clause for the start clause
+                                clauseRanges.push([word[0], compWord[0], word[1], compWord[1]]); //add start and end clause and their ranges to array
+                                clauseMatch = true; //Match has been found
+                            } else if (reservedClauses.indexOf(compWord[1]) > - 1) { //If word is a reserved clause not in the end clause array
+                                appendFeedback('The clause "' + word[1] + '" at character ' + word[0] + ' cannot have the reserved clause "' + compWord[1] + '" at character ' + compWord[0]);
+                            }
+                            if (clauseMatch === false) { //If match not found in previous if statement
+                                betweenClauseText.push([compWord[0], compWord[1]]); //Put text into array
+                                if ((betweenClauseText.length % 2 === 0) && objectSeparators.length > 0 && objectSeparators.indexOf(compWord[1]) === - 1) {
+                                    appendFeedback('Object names after clause "' + word[1] + '" at character ' + word[0] + ' should have one of the following separators between its values:  ' + objectSeparators); //If even number of values and word is not a separator for the clause
+                                } else if (specialConditions.indexOf("singleObject") > -1 && betweenClauseText.length > 1) {
+                                    appendFeedback('Clause "' + word[1] + '" at character ' + word[0] + ' can only have 1 value between it and the next clause'); //If clause has single object flag and there is more than 1 non-clause value after if.
+                                }
+                            }
+                        }
+                    }
+                });
+                if (clauseMatch === false && endClauses.length > 0 && specialConditions.indexOf('endEmpty') === -1) {
+                    appendFeedback('The "' + word[1] + '" clause at character ' + word[0] + ' is missing one of the following clauses after it: ' + endClauses); //If no clause range for word but has end clauses then required end clause/s are missing.
+                }
+            }
+        });
+        return [betweenClauses, betweenClauseText, endClauses, specialConditions, clauseRanges]
+    }
+
+    function appendFeedback (feedbackText) { //Add a new list element to the feedback list with the passed in text.
+        let newLi = document.createElement('li');  //Create list node element
+        newLi.appendChild(document.createTextNode(feedbackText)); //Add text to new list element
+        document.getElementById("feedback1").appendChild(newLi); //Append new list element to feedback list
+    }
+</script>
+</html>

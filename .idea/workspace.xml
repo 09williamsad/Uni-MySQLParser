@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c04b2ae6-e2da-4cf3-ba60-7c6a00fbc00c" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <executablePath>composer</executablePath>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="evaluationForm.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/evaluationForm.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2185">
+              <caret line="223" column="104" selection-start-line="223" selection-start-column="104" selection-end-line="223" selection-end-column="104" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>post</find>
+      <find>sql parser</find>
+      <find>$returnString</find>
+      <find>$groupText</find>
+      <find>let words</find>
+      <find>singleQuoteIndex</find>
+      <find>words</find>
+      <find>lexar</find>
+      <find>&lt;div class=&quot;two columns&quot;&gt;</find>
+      <find>container</find>
+      <find>&lt;/div&gt;</find>
+      <find>&lt;div class=&quot;row&quot;&gt;</find>
+      <find>&lt;div class=&quot;five columns&quot;&gt;</find>
+      <find>2</find>
+      <find>1</find>
+      <find>character</find>
+      <find>the clause</find>
+      <find>on</find>
+      <find>td</find>
+      <find>br</find>
+      <find>columns</find>
+      <find>border-box</find>
+      <find>column</find>
+      <find>outline</find>
+      <find>usefull</find>
+      <find>seven columns&quot;&gt;&lt;b&gt;Problem</find>
+      <find>textarea</find>
+      <find>submitQuery</find>
+      <find>query</find>
+      <find>button</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>&lt;/tr&gt;</replace>
+      <replace>&lt;tr&gt;</replace>
+      <replace>&lt;td&gt;</replace>
+      <replace>useful</replace>
+      <replace>eight columns&quot;&gt;&lt;b&gt;Problem</replace>
+      <replace>textarea cols=&quot;80&quot;</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>D:\Users\i7648171\Google Drive\University stuff\Project\xampp\htdocs\SQL Parser\JavaScriptSpellCheck</dir>
+      <dir>C:\xampp\htdocs\SQL Parser</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Default.aspx" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/css/index.html" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/JavaScriptSpellCheck/02-TestInstall.html" />
+        <option value="$PROJECT_DIR$/js/JavaScriptSpellCheck/core/php/engine.php" />
+        <option value="$PROJECT_DIR$/JavaScriptSpellCheck/03-Example.html" />
+        <option value="$PROJECT_DIR$/js/textAreaGrow.js" />
+        <option value="$PROJECT_DIR$/JavaScriptSpellCheck/include.js" />
+        <option value="$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/spellcheck.php" />
+        <option value="$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/js/spellcheck.min.js" />
+        <option value="$PROJECT_DIR$/js/storedArrays.js" />
+        <option value="$PROJECT_DIR$/js/reservedWords.js" />
+        <option value="$PROJECT_DIR$/js/reservedCharacters.js" />
+        <option value="$PROJECT_DIR$/js/reservedClauses.js" />
+        <option value="$PROJECT_DIR$/js/clausesStartEnd.js" />
+        <option value="$PROJECT_DIR$/js/evaluationForm.html" />
+        <option value="$PROJECT_DIR$/server.php" />
+        <option value="$PROJECT_DIR$/css/skeleton.css" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/evaluationForm.html" />
+        <option value="$PROJECT_DIR$/surveySubmit.php" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
+    <include_path>
+      <path value="$PROJECT_DIR$/../../php" />
+    </include_path>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="width" value="1270" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SQL Parser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQL Parser" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SQL Parser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SQL Parser" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SQL Parser" />
+      <recent name="D:\Users\i7648171\Google Drive\University stuff\Project\xampp\htdocs\SQL Parser" />
+      <recent name="D:\Users\i7648171\Google Drive\University stuff\Project\xampp\htdocs\SQL Parser\js\JavaScriptSpellCheck\dictionaries" />
+      <recent name="D:\Users\i7648171\Google Drive\University stuff\Project\xampp\htdocs\SQL Parser\js" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="PhpBuiltInWebServerConfigurationType" factoryName="PHP Built-in Web Server" nameIsGenerated="true" document_root="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c04b2ae6-e2da-4cf3-ba60-7c6a00fbc00c" name="Default Changelist" comment="" />
+      <created>1548670582730</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1548670582730</updated>
+      <workItem from="1548670585603" duration="1277000" />
+      <workItem from="1548689717040" duration="4433000" />
+      <workItem from="1548752938276" duration="2054000" />
+      <workItem from="1548767950910" duration="5507000" />
+      <workItem from="1548775030637" duration="5131000" />
+      <workItem from="1548853887422" duration="3062000" />
+      <workItem from="1548857208220" duration="5019000" />
+      <workItem from="1549019226412" duration="601000" />
+      <workItem from="1549021054913" duration="738000" />
+      <workItem from="1549022972666" duration="607000" />
+      <workItem from="1549024054165" duration="847000" />
+      <workItem from="1549027786657" duration="6023000" />
+      <workItem from="1549272885465" duration="4162000" />
+      <workItem from="1549281966083" duration="14459000" />
+      <workItem from="1549358530997" duration="3775000" />
+      <workItem from="1549367820148" duration="599000" />
+      <workItem from="1549373715691" duration="2781000" />
+      <workItem from="1549445144003" duration="593000" />
+      <workItem from="1549452847536" duration="1092000" />
+      <workItem from="1549454062366" duration="17784000" />
+      <workItem from="1549532766756" duration="3856000" />
+      <workItem from="1549542284148" duration="10993000" />
+      <workItem from="1549618182426" duration="4382000" />
+      <workItem from="1549623692137" duration="657000" />
+      <workItem from="1549628927857" duration="13824000" />
+      <workItem from="1549879120803" duration="733000" />
+      <workItem from="1549879893685" duration="1830000" />
+      <workItem from="1549889043087" duration="7707000" />
+      <workItem from="1549972295126" duration="11307000" />
+      <workItem from="1550049219137" duration="5205000" />
+      <workItem from="1550059970876" duration="12953000" />
+      <workItem from="1550136055286" duration="3990000" />
+      <workItem from="1550143907905" duration="641000" />
+      <workItem from="1550145322967" duration="3674000" />
+      <workItem from="1550151042826" duration="6550000" />
+      <workItem from="1550223113315" duration="4769000" />
+      <workItem from="1550241262378" duration="8342000" />
+      <workItem from="1550482320724" duration="1085000" />
+      <workItem from="1550491565855" duration="6209000" />
+      <workItem from="1550504214947" duration="3563000" />
+      <workItem from="1550566974283" duration="4570000" />
+      <workItem from="1550576263486" duration="5948000" />
+      <workItem from="1550588403942" duration="1200000" />
+      <workItem from="1550653947954" duration="4184000" />
+      <workItem from="1550665109246" duration="11589000" />
+      <workItem from="1550744254336" duration="9436000" />
+      <workItem from="1550754951845" duration="6362000" />
+      <workItem from="1550826536238" duration="6260000" />
+      <workItem from="1550834061118" duration="317000" />
+      <workItem from="1550839115694" duration="9731000" />
+      <workItem from="1551086673594" duration="4739000" />
+      <workItem from="1551455422596" duration="9698000" />
+      <workItem from="1551694286518" duration="48000" />
+      <workItem from="1553852767314" duration="3737000" />
+      <workItem from="1553863334369" duration="10733000" />
+      <workItem from="1554106254526" duration="5081000" />
+      <workItem from="1554117044622" duration="2925000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="289372000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49796748" visible="true" weight="0.1375" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32899022" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.32837406" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.31914893" />
+      <window_info id="Structure" order="1" sideWeight="0.5020325" side_tool="true" weight="0.24810892" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32899022" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="PHP-CGI Server" order="12" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="SQL Parser Site" type="b2602c69:ProjectViewProjectNode" />
+        <item name="SQL Parser Site" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/evaluationForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="75" lean-forward="true" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/surveySubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="112" lean-forward="true" selection-start-line="52" selection-start-column="112" selection-end-line="52" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluationForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="12" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/skeleton.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4573">
+          <caret line="269" column="9" selection-start-line="269" selection-start-column="2" selection-end-line="269" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1717">
+          <caret line="101" column="151" selection-start-line="101" selection-start-column="151" selection-end-line="101" selection-end-column="151" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="52" column="44" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="37" column="50" lean-forward="true" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Default.aspx" />
+    <entry file="file://$PROJECT_DIR$/composer.json" />
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/02-TestInstall.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/03-Example.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/textAreaGrow.js" />
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/core/php/engine.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/core/dialog.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="76" column="196" selection-start-line="76" selection-start-column="196" selection-end-line="76" selection-end-column="196" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/extensions/modalbox/modalbox.combined.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="2552" column="5" selection-start-line="2552" selection-start-column="5" selection-end-line="2552" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/JavaScriptSpellCheck/include.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="355" column="152" selection-start-line="355" selection-start-column="152" selection-end-line="355" selection-end-column="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/spellcheck.php" />
+    <entry file="file://$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/js/spellcheck.min.js" />
+    <entry file="file://$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/js/spellcheck.js" />
+    <entry file="file://$PROJECT_DIR$/Javascript-PHP-Spell-Checker-1.6.1/README.md" />
+    <entry file="file://$PROJECT_DIR$/js/reservedWords.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1040">
+          <caret line="1" column="9876" selection-start-line="1" selection-start-column="9876" selection-end-line="1" selection-end-column="9876" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/reservedCharacters.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="10" lean-forward="true" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/reservedClauses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret column="5717" selection-start-column="5712" selection-end-column="5717" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/requiredClauses.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/clausesStartEnd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="33" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/normalize.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="18" column="6" lean-forward="true" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/skeleton.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="187" column="25" selection-start-line="187" selection-start-column="25" selection-end-line="187" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-255">
+          <caret line="15" column="29" lean-forward="true" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#textarea#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/surveySubmit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="627">
+          <caret line="64" column="12" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/evaluationForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2185">
+          <caret line="223" column="104" selection-start-line="223" selection-start-column="104" selection-end-line="223" selection-end-column="104" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
