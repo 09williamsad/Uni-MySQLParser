@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST["query"])) {
     $username = "root";
-    $password = "Asdosa";
+    $password = "";
     $host = "127.0.0.1";
     $db = "sql parser";
     $connection = mysqli_connect($host, $username, $password, $db);
